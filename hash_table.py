@@ -40,6 +40,7 @@ class hash_table:
         """
         :type digits: str
         :rtype: List[str]
+        : using backtracking
         """
         combinations = {
             '2' : 'abc',
@@ -54,5 +55,48 @@ class hash_table:
         for i in range(len(digits)):
             print(combinations[digits[i]])
 
+    def isValidSudoku(self, board: list[list[str]]):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+
+        for i in range(9):
+            temp = set()
+            for j in range(9):
+                if board[i][j] in temp:
+                    return False
+                elif board[i][j] != '.':
+                    temp.add(board[i][j])
+
+        for i in range(9):
+            temp = set()
+            for j in range(9):
+                if board[j][i] in temp:
+                    return False
+                elif board[j][i] != '.':
+                    temp.add(board[j][i])
+
+        start = [
+            (0, 0), (0, 3), (0, 6),
+            (3, 0), (3, 3), (3, 6),
+            (6, 0), (6, 3), (6, 6),
+        ]
+        for r, c in start:
+            temp = set()
+            for i in range(r, r+3):
+                for j in range(c, c+3):
+                    if board[i][j] in temp:
+                        return False
+                    elif board[i][j] != '.':
+                        temp.add(board[i][j])
+
+        return True
+
+        
+l = [[".","4",".",".","9","3",".",".","."],[".",".",".",".",".",".",".","3","."],[".",".",".",".",".",".",".",".","."],[".",".","4",".",".",".",".",".","6"],["2",".","3",".",".",".",".","6","."],[".",".",".",".",".",".",".",".","."],[".",".",".",".",".",".","4",".","."],[".",".",".","1",".",".",".",".","."],[".",".",".","4","7",".",".",".","."]]
+
+
+
 h = hash_table()
-print(h.letterCombinations('23'))
+print(h.isValidSudoku(l))
