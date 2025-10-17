@@ -14,7 +14,9 @@ class Solution(object):
 
         return not stack
 
+    def simplifyPath(self, path: str) -> str:
+        pass
     
 str = list('([)')
 s = Solution()
-print(s.isValid(str))
+print(s.simplifyPath(str))

@@ -1,0 +1,16 @@
+class Solution(object):
+    def merge(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        # sort(): có thay đổi list gốc
+        # sorted: không thay đổi list gốc
+        # key = lambla x: hàm x: sắp xếp theo tiêu chí sau dấu ':'
+
+        list = sorted(intervals, key=lambda x: x[0])
+        
+
+
+s = Solution()
+s.merge([[1,4], [4,5], [10,12], [9,11]])

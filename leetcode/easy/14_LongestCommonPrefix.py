@@ -6,6 +6,8 @@ class Solution(object):
         Args:
             strs (_type_): List[str]
         """
+
+        # O(n^2)
         min_len = min([len(str) for str in strs])
         if min_len == 0:
             return ""
